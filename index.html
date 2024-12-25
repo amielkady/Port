@@ -6,24 +6,41 @@
     <title>Portfolio</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background: #f4f4f9;
+            background: #f9f9f9;
             color: #333;
+            line-height: 1.6;
         }
 
         header {
             background: #4CAF50;
             color: white;
-            padding: 1rem;
+            padding: 1.5rem;
             text-align: center;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 2rem auto;
             padding: 1rem;
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
         }
 
         .tabs {
@@ -34,15 +51,18 @@
         .tab {
             flex: 1;
             text-align: center;
-            padding: 0.5rem;
+            padding: 0.75rem;
             cursor: pointer;
-            background: #ddd;
-            border: 1px solid #ccc;
+            background: #e9e9e9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 0 0.25rem;
         }
 
         .tab.active {
             background: #4CAF50;
             color: white;
+            font-weight: bold;
         }
 
         .tab-content {
@@ -60,22 +80,26 @@
         }
 
         .project-item {
-            flex: 1 1 calc(33.333% - 1rem);
-            border: 1px solid #ccc;
+            flex: 1 1 calc(48% - 1rem);
+            border: 1px solid #ddd;
             padding: 1rem;
             background: white;
             text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .project-item img {
             max-width: 100%;
             height: auto;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
+            border-radius: 4px;
         }
 
         .project-item a {
             text-decoration: none;
             color: #4CAF50;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -87,33 +111,21 @@
     <div class="container">
         <section id="hello">
             <h2>Hello!</h2>
-            <p>Welcome to my portfolio. Explore my work and learn more about me.</p>
+            <p>Welcome to my portfolio. Explore my work and get to know more about me.</p>
         </section>
 
         <section id="about">
             <h2>About Me</h2>
-            <p>[Add your about me content here]</p>
+            <p>[Add your about me content here. Highlight your background, skills, and passions.]</p>
         </section>
 
         <div class="tabs">
             <div class="tab active" data-target="blogposts">Blogposts</div>
-            <div class="tab" data-target="data-visualization">Data Visualization</div>
             <div class="tab" data-target="other">Other Projects</div>
         </div>
 
         <div id="blogposts" class="tab-content active">
             <h3>Blogposts</h3>
-            <div class="project">
-                <!-- Add project items here -->
-                <div class="project-item">
-                    <img src="" alt="Project Preview">
-                    <a href="#" target="_blank">Project Title</a>
-                </div>
-            </div>
-        </div>
-
-        <div id="data-visualization" class="tab-content">
-            <h3>Data Visualization</h3>
             <div class="project">
                 <!-- Add project items here -->
                 <div class="project-item">
