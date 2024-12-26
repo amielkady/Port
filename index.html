@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amira Elkady Portfolio</title>
+    
     <style>
 
-        .page-content {
-    flex: 1; 
-}
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -75,9 +73,6 @@ a {text-decoration: none;}
             text-align: center;
             justify-content: center;
         }
-        header h1 p {top: 50%;
-                    }
-
         .container {
             max-width: 900px;
             margin: 2rem auto;
@@ -162,8 +157,56 @@ gap:40px; justify-content: center;
 #why-me-content {
     display: none; /* Hide content by default */
 }
+
+@media (max-width: 768px) {
+    #navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .tabs {
+        flex-direction: column; /* Stack tabs vertically on mobile */
+    }
+
+    .tab {
+        width: 100%; /* Make tabs full width on mobile */
+        margin: 0.5rem 0;
+    }
+
+    .footer-div {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .container {
+        padding: 0.5rem; /* Reduce padding for small screens */
+    }
+
+    .project {
+        flex-direction: column; /* Stack project items vertically */
+        align-items: center;
+    }
+
+    .project-item {
+        width: 100%; /* Make project items full width */
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 1.5rem; /* Reduce font size for small screens */
+    }
+
+    .tabs {
+        padding: 0 1rem; /* Add padding to tabs on small screens */
+    }
+}
+        
     </style>
+    
 </head>    
+    
     <navbar id="navbar">
     <a class="header-element" id="nav-link" href="#about">About Me</a>
     <a class="header-element" id="nav-link" href="#why-me">Why Me</a>
