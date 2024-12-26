@@ -168,7 +168,7 @@ gap:40px; justify-content: center;
         </section>
 <section id="why-me">
     <h2>Why Work With Me
-          <button class="toggle-btn" onclick="toggleSection('why-me-content', this)">&#9660;</button>
+             <button class="toggle-btn" onclick="toggleSection('why-me-content', this)">&#9660;</button>
     </h2>
     <p>I bring a unique blend of skills that combines technical precision with creative storytelling. With a background as a clinical pharmacist and experience in copywriting and content creation, I excel at simplifying complex concepts into impactful, engaging content.</p>
 
@@ -226,16 +226,16 @@ gap:40px; justify-content: center;
             });
         });
 
-    function toggleSection(sectionId, button) {
+ function toggleSection(sectionId, button) {
         const section = document.getElementById(sectionId);
 
         // Toggle the display of the section
         if (section.style.display === 'none' || !section.style.display) {
             section.style.display = 'block'; // Show the section
-            button.innerHTML = '&#9650;'; // Change to "up" arrow
+            button.innerHTML = '&#9650;';
         } else {
-            section.style.display = 'none'; // Hide the section
-            button.innerHTML = '&#9660;'; // Change to "down" arrow
+            section.style.display = 'none'; 
+            button.innerHTML = '&#9660;'; 
         }
     }
     document.addEventListener('DOMContentLoaded', () => {
