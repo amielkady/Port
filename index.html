@@ -19,16 +19,16 @@
 
      .footer-div {
             width: 100%;
-            position: fixed;
+            position: relative;
             bottom: 0;
             left: 0;
-            background-color: navy;
+            background-color: #060429;
             color: white;
             padding: 10px 20px;
         }
 
         footer {
-            display: flex;
+             display: inline-block; 
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
@@ -43,6 +43,7 @@
 
         footer a:hover {
             text-decoration: underline;
+        }
         
         #navbar {
     position: fixed;
@@ -171,11 +172,11 @@ gap:40px; justify-content: center;
     }
 
     .tabs {
-        flex-direction: column; /* Stack tabs vertically on mobile */
+        flex-direction: column;
     }
 
     .tab {
-        width: 100%; /* Make tabs full width on mobile */
+        width: 100%;
         margin: 0.5rem 0;
     }
 
@@ -185,11 +186,11 @@ gap:40px; justify-content: center;
     }
 
     .container {
-        padding: 0.5rem; /* Reduce padding for small screens */
+        padding: 0.5rem;
     }
 
     .project {
-        flex-direction: column; /* Stack project items vertically */
+        flex-direction: column;
         align-items: center;
     }
 
@@ -199,16 +200,7 @@ gap:40px; justify-content: center;
     }
 }
 
-@media (max-width: 480px) {
-    h2 {
-        font-size: 1.5rem; /* Reduce font size for small screens */
-    }
 
-    .tabs {
-        padding: 0 1rem; /* Add padding to tabs on small screens */
-    }
-}
-        
     </style>
     
 </head>    
