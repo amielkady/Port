@@ -211,8 +211,14 @@ gap:40px; justify-content: center;
             });
         });
 
+            document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('#about-content, #why-me-content').forEach(section => {
+            section.style.display = 'none';
+        });
+    });
+
  function toggleSection(sectionId, button) {
-        const section = document.getElementById(sectionId);
+        const section = document.querySelectorAll("section");
 
         // Toggle the display of the section
         if (section.style.display === 'none' || !section.style.display) {
@@ -223,11 +229,7 @@ gap:40px; justify-content: center;
             button.innerHTML = '&#9660;'; 
         }
     }
-    document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('#about-content, #why-me-content').forEach(section => {
-            section.style.display = 'none';
-        });
-    });
+
     </script>
 </body>
 </html>
