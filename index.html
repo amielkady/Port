@@ -131,9 +131,9 @@ gap:40px; justify-content: center;
 <body>
      <navbar id="navbar">
     <a class="header-element" id="nav-link" href="#about">About Me</a>
-    <a class="header-element" id="nav-link" href="#Work">Work Samples</a>
     <a class="header-element" id="nav-link" href="#why-me">Why Me</a>
-         <a class="header-element" id="nav-link" href="#Contact">Contact</a>
+    <a class="header-element" id="nav-link" href="#Work">Work Samples</a>
+    <a class="header-element" id="nav-link" href="#Contact">Contact</a>
   
     </navbar>
     <header>
@@ -147,19 +147,19 @@ gap:40px; justify-content: center;
            
             <h2>About Me
                <button class="toggle-btn" onclick="toggleSection('about-content', this)">&#9660;</button></h2>
-            <p>A highly skilled and results-driven content writer and digital marketing professional with a strong foundation in healthcare and pharmacy.</p>
+<div id="about-content">             <p>A highly skilled and results-driven content writer and digital marketing professional with a strong foundation in healthcare and pharmacy.</p>
             <p>With a Bachelor's degree in Clinical Pharmacy and a Certificate in Sales and Marketing, I combine my medical expertise with SEO strategies to produce informative, SEO-optimized content that educates audiences and drives meaningful engagement. Experienced in utilizing content creation tools, such as WordPress, Canva, and SEMrush, I thrive in collaborative, fast-paced environments and am dedicated to creating content that enhances brand visibility, engages users, and boosts organic traffic.</p>
             <p>During my time as a copywriter, I've created 500+ blogposts -completely human-written!- driving organic traffic into various clients' webpages. Medical services, FMCG, finance, e-commerce, fashion blogs, you name it, I've probably written a blog or two about it!</p>
-        </section>
+</div></section>
 <section id="why-me">
     <h2>Why Work With Me
        <button class="toggle-btn" onclick="toggleSection('why-me-content', this)">&#9660;</button>
     </h2>
-    <p>I bring a unique blend of skills that combines technical precision with creative storytelling. With a background as a clinical pharmacist and experience in copywriting and content creation, I excel at simplifying complex concepts into impactful, engaging content.</p>
+<div id="why-me-content">    <p>I bring a unique blend of skills that combines technical precision with creative storytelling. With a background as a clinical pharmacist and experience in copywriting and content creation, I excel at simplifying complex concepts into impactful, engaging content.</p>
 
 <p>My strong presentation and public speaking skills ensure clear communication, while my attention to detail guarantees high-quality, on-time delivery. Whether you need compelling copy, educational materials, or innovative solutions, I’m committed to driving results that make a difference.</p>
 
-<p>Let’s create something exceptional together.</p>
+<p>Let’s create something exceptional together.</p></div>
 </section>
         <div class="tabs" id="Work">
             <div class="tab active" data-target="blogposts">Blogposts</div>
@@ -220,7 +220,6 @@ gap:40px; justify-content: center;
 function toggleSection(sectionId, button) {
     const section = document.getElementById(sectionId);
 
-  
     if (section.style.display === 'none' || !section.style.display) {
         section.style.display = 'block'; // Show the section
         button.innerHTML = '&#9650;'; // Change arrow to up
