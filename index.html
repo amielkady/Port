@@ -31,13 +31,15 @@ a {text-decoration: none;}
     text-decoration: none;
     color: #e6e0d5;
 }
-.footer-div {background-color: #060429;
+.footer-div {
+    position: absolute;
+    background-color: #060429;
              color: white;
             display: flexbox;
             font-size: 12px;
             padding: 2px;
             width: 100%;
-                 display: flex;
+         display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem 1rem;
@@ -45,14 +47,17 @@ a {text-decoration: none;}
            }
         .footer-div a { text-decoration: none;}
         header {
-            text-align: center; 
+            right: 0;
+            left: 0;
+            
             font-weight: 700;
             height: 100vh;
-            width:90%;
+            width:100%;
             background: #e6e0d5;
             color: #060429;
             padding: 1.5rem;
             text-align: center;
+            justify-content: center;
         }
 
         .container {
