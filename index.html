@@ -146,14 +146,14 @@ gap:40px; justify-content: center;
         <section id="about">
            
             <h2>About Me
-             <button class="toggle-btn" onclick="toggleSection('about-content', this)">&#9660;</button></h2>
+               <button class="toggle-btn" onclick="toggleSection('about-content', this)">&#9660;</button></h2>
             <p>A highly skilled and results-driven content writer and digital marketing professional with a strong foundation in healthcare and pharmacy.</p>
             <p>With a Bachelor's degree in Clinical Pharmacy and a Certificate in Sales and Marketing, I combine my medical expertise with SEO strategies to produce informative, SEO-optimized content that educates audiences and drives meaningful engagement. Experienced in utilizing content creation tools, such as WordPress, Canva, and SEMrush, I thrive in collaborative, fast-paced environments and am dedicated to creating content that enhances brand visibility, engages users, and boosts organic traffic.</p>
             <p>During my time as a copywriter, I've created 500+ blogposts -completely human-written!- driving organic traffic into various clients' webpages. Medical services, FMCG, finance, e-commerce, fashion blogs, you name it, I've probably written a blog or two about it!</p>
         </section>
 <section id="why-me">
     <h2>Why Work With Me
-             <button class="toggle-btn" onclick="toggleSection('why-me-content', this)">&#9660;</button>
+       <button class="toggle-btn" onclick="toggleSection('why-me-content', this)">&#9660;</button>
     </h2>
     <p>I bring a unique blend of skills that combines technical precision with creative storytelling. With a background as a clinical pharmacist and experience in copywriting and content creation, I excel at simplifying complex concepts into impactful, engaging content.</p>
 
@@ -217,19 +217,18 @@ gap:40px; justify-content: center;
         });
     });
 
- function toggleSection(sectionId, button) {
-        const section = document.querySelectorAll("section");
+function toggleSection(sectionId, button) {
+    const section = document.getElementById(sectionId);
 
-        // Toggle the display of the section
-        if (section.style.display === 'none' || !section.style.display) {
-            section.style.display = 'block'; // Show the section
-            button.innerHTML = '&#9650;';
-        } else {
-            section.style.display = 'none'; 
-            button.innerHTML = '&#9660;'; 
-        }
+  
+    if (section.style.display === 'none' || !section.style.display) {
+        section.style.display = 'block'; // Show the section
+        button.innerHTML = '&#9650;'; // Change arrow to up
+    } else {
+        section.style.display = 'none'; // Hide the section
+        button.innerHTML = '&#9660;'; // Change arrow to down
     }
-
+}
     </script>
 </body>
 </html>
