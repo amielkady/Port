@@ -13,11 +13,24 @@
             color: #060429;
             line-height: 1.6;
         }
-#navbar {position: fixed; top: 0;
-        background-color: #060429;
-        color: e6e0d5;
-        display: flex;
-        justify-content: flex-end;}
+#navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #060429;
+    color: #e6e0d5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    box-sizing: border-box;
+}
+
+#navbar .header-element {
+    margin: 0 0.5rem;
+    text-decoration: none;
+    color: #e6e0d5;
+}
 .footer-div {background-color: #060429;
              color: white;
             display: flexbox;
@@ -80,36 +93,44 @@
 
         .tab-content.active {
             display: block;
-        }
+        }.project {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+}
 
-        .project {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
+.project-item {
+    flex: 1 1 calc(48% - 1rem); /* Adjusts each box to take up equal space */
+    max-width: calc(48% - 1rem); /* Ensures the boxes don't exceed 48% of the container width */
+    border: 1px solid #ddd;
+    padding: 1rem;
+    background: white;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
-        .project-item {
-            flex: 1 1 calc(48% - 1rem);
-            border: 1px solid #ddd;
-            padding: 1rem;
-            background: white;
-            text-align: center;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+.project-item img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 0.75rem;
+    border-radius: 4px;
+}
 
-        .project-item img {justify-content: center;
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 0.75rem;
-            border-radius: 4px;
-        }
-
-        .project-item a {
-            text-decoration: none;
-            color: #060429;
-            font-weight: bold;
-        }
+.project-item a {
+    text-decoration: none;
+    color: #060429;
+    font-weight: bold;
+    margin-top: auto; /* Ensures the link is at the bottom */
+}
+        #about-content,
+#why-me-content {
+    display: none;
+}
     </style>
 </head>
 <body>
@@ -117,6 +138,7 @@
     <a class="header-element" id="nav-link" href="#about">About Me</a>
     <a class="header-element" id="nav-link" href="#Work">Work Samples</a>
     <a class="header-element" id="nav-link" href="#Contact">Contact</a>
+    <a class="header-element" id="nav-link" href="#why-me">Why Me</a>
     </navbar>
     <header>
         <h1>Hi, I'm Amira Elkady</h1>
@@ -126,12 +148,15 @@
     <div class="container">
 
         <section id="about">
-            <h2>About Me</h2>
+           
+            <h2>About Me</h2> <button onclick="toggleSection('about-content')">Toggle About Me</button>
             <p>A highly skilled and results-driven content writer and digital marketing professional with a strong foundation in healthcare and pharmacy.</p>
             <p>With a Bachelor's degree in Clinical Pharmacy and a Certificate in Sales and Marketing, I combine my medical expertise with SEO strategies to produce informative, SEO-optimized content that educates audiences and drives meaningful engagement. Experienced in utilizing content creation tools, such as WordPress, Canva, and SEMrush, I thrive in collaborative, fast-paced environments and am dedicated to creating content that enhances brand visibility, engages users, and boosts organic traffic.</p>
             <p>During my time as a copywriter, I've created 500+ blogposts -completely human-written!- driving organic traffic into various clients' webpages. Medical services, FMCG, finance, e-commerce, fashion blogs, you name it, I've probably written a blog or two about it!</p>
         </section>
 <section id="why-me">
+    <h2>Why Work With Me</h2>
+    <button onclick="toggleSection('why-me-content')">Toggle Why Me</button>
     <p>I bring a unique blend of skills that combines technical precision with creative storytelling. With a background as a clinical pharmacist and experience in copywriting and content creation, I excel at simplifying complex concepts into impactful, engaging content.</p>
 
 <p>My strong presentation and public speaking skills ensure clear communication, while my attention to detail guarantees high-quality, on-time delivery. Whether you need compelling copy, educational materials, or innovative solutions, I’m committed to driving results that make a difference.</p>
@@ -143,7 +168,6 @@
             <div class="tab" data-target="other">Other Projects</div>
         </div>
         <div id="blogposts" class="tab-content active">
-            <h3>Blogposts</h3>
             <p>Trust me, I want to share the hundreds of blogposts I'm proud to have created. Since I can't, though, here's a selection of my work:</p>
             <div class="project">
                 <!-- Add project items here -->
@@ -163,7 +187,7 @@
         </div>
 
         <div id="other" class="tab-content">
-            <h3>Other Projects</h3>
+            
             <p>While I'm still a novice front-end developer, I've also created some projects I'm particularly proud of:</p>
             <div class="project">
                 <!-- Add project items here -->
@@ -188,6 +212,10 @@
                 document.getElementById(tab.dataset.target).classList.add('active');
             });
         });
+        function toggleSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        section.style.display = section.style.display === 'none' ? 'block' : 'none';
+    };
     </script>
 </body>
 </html>
