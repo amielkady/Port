@@ -12,8 +12,9 @@
             background: #f9f9f9;
             color: #060429;
             line-height: 1.6;
+             overflow-x: hidden; 
         }
-#navbar {
+.footer-div, #navbar {
     position: fixed;
     top: 0;
     width: 100%;
@@ -31,21 +32,9 @@ a {text-decoration: none;}
     text-decoration: none;
     color: #e6e0d5;
 }
-.footer-div {
-    position: absolute;
-    background-color: #060429;
-             color: white;
-            display: flexbox;
-            font-size: 12px;
-            padding: 2px;
-            width: 100%;
-         display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    box-sizing: border-box;
-           }
-        .footer-div a { text-decoration: none;}
+
+        .footer-div a { text-decoration: none; color: white;}
+        .footer-div a:hover {text-decoration-thickness: 50%;}
         header {
             right: 0;
             left: 0;
