@@ -25,7 +25,7 @@
     padding: 0.5rem 1rem;
     box-sizing: border-box;
 }
-
+a {text-decoration: none;}
 #navbar .header-element {
     margin: 0 0.5rem;
     text-decoration: none;
@@ -34,7 +34,7 @@
 .footer-div {background-color: #060429;
              color: white;
             display: flexbox;
-            font-size: 10px;
+            font-size: 12px;
             padding: 2px;}
         header {
             background: #e6e0d5;
@@ -99,10 +99,17 @@
     gap: 1rem;
     justify-content: space-between;
 }
+.project {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+}
 
 .project-item {
-    flex: 1 1 calc(48% - 1rem); /* Adjusts each box to take up equal space */
-    max-width: calc(48% - 1rem); /* Ensures the boxes don't exceed 48% of the container width */
+    flex: 1 1 calc(48% - 1rem); /* Each box takes up equal space */
+    max-width: calc(48% - 1rem);
+    height: 200px; /* Fixed height for uniformity */
     border: 1px solid #ddd;
     padding: 1rem;
     background: white;
@@ -117,6 +124,7 @@
 .project-item img {
     max-width: 100%;
     height: auto;
+    max-height: 120px; /* Ensure images don't exceed a specific height */
     margin-bottom: 0.75rem;
     border-radius: 4px;
 }
@@ -125,11 +133,27 @@
     text-decoration: none;
     color: #060429;
     font-weight: bold;
-    margin-top: auto; /* Ensures the link is at the bottom */
+    margin-top: auto;
 }
-        #about-content,
+
+.toggle-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: #060429;
+    cursor: pointer;
+    margin-left: 0.5rem;
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+}
+
+.toggle-btn.expanded {
+    transform: rotate(180deg); /* Rotate arrow when expanded */
+}
+
+#about-content, 
 #why-me-content {
-    display: none;
+    display: none; /* Hide content by default */
 }
     </style>
 </head>
@@ -137,8 +161,9 @@
      <navbar id="navbar">
     <a class="header-element" id="nav-link" href="#about">About Me</a>
     <a class="header-element" id="nav-link" href="#Work">Work Samples</a>
-    <a class="header-element" id="nav-link" href="#Contact">Contact</a>
     <a class="header-element" id="nav-link" href="#why-me">Why Me</a>
+         <a class="header-element" id="nav-link" href="#Contact">Contact</a>
+  
     </navbar>
     <header>
         <h1>Hi, I'm Amira Elkady</h1>
@@ -149,14 +174,16 @@
 
         <section id="about">
            
-            <h2>About Me</h2> <button onclick="toggleSection('about-content')">Toggle About Me</button>
+            <h2>About Me
+             <button class="toggle-btn" onclick="toggleSection('about-content', this)">&#9660;</button></h2>
             <p>A highly skilled and results-driven content writer and digital marketing professional with a strong foundation in healthcare and pharmacy.</p>
             <p>With a Bachelor's degree in Clinical Pharmacy and a Certificate in Sales and Marketing, I combine my medical expertise with SEO strategies to produce informative, SEO-optimized content that educates audiences and drives meaningful engagement. Experienced in utilizing content creation tools, such as WordPress, Canva, and SEMrush, I thrive in collaborative, fast-paced environments and am dedicated to creating content that enhances brand visibility, engages users, and boosts organic traffic.</p>
             <p>During my time as a copywriter, I've created 500+ blogposts -completely human-written!- driving organic traffic into various clients' webpages. Medical services, FMCG, finance, e-commerce, fashion blogs, you name it, I've probably written a blog or two about it!</p>
         </section>
 <section id="why-me">
-    <h2>Why Work With Me</h2>
-    <button onclick="toggleSection('why-me-content')">Toggle Why Me</button>
+    <h2>Why Work With Me
+          <button class="toggle-btn" onclick="toggleSection('why-me-content', this)">&#9660;</button>
+    </h2>
     <p>I bring a unique blend of skills that combines technical precision with creative storytelling. With a background as a clinical pharmacist and experience in copywriting and content creation, I excel at simplifying complex concepts into impactful, engaging content.</p>
 
 <p>My strong presentation and public speaking skills ensure clear communication, while my attention to detail guarantees high-quality, on-time delivery. Whether you need compelling copy, educational materials, or innovative solutions, I’m committed to driving results that make a difference.</p>
@@ -195,7 +222,7 @@
             </div>
         </div>
     </div>
-        <div class="footer-div">
+        <div class="footer-div" id="Contact">
 <footer>
     <p><a href="https://www.linkedin.com/in/amielkady/" target="_blank">Linkedin</a></p>
     <p><a href="+201155119971" target="_blank">+201155119971</a></p>
