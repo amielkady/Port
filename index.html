@@ -1,213 +1,262 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amira Elkady Portfolio</title>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+
     <style>
+        * { box-sizing: border-box; }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             margin: 0;
             padding: 0;
-            background: #f9f9f9;
+            background: #f8f7fb;
             color: #060429;
-            line-height: 1.6;
-             overflow-x: hidden; 
+            line-height: 1.7;
+            overflow-x: hidden;
         }
 
-     .footer-div {
+        .footer-div {
             width: 100%;
             position: relative;
             bottom: 0;
             left: 0;
             background-color: #060429;
-         color: #e6e0d5;
-          
-            padding: 10px 20px;
+            color: #e6e0d5;
+            padding: 16px 24px;
         }
 
         footer {
-             display: inline-block; 
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
+            display: inline-block;
         }
 
-        /* Links styling */
         footer a {
             color: white;
             text-decoration: none;
             margin: 0 15px;
+            transition: 0.25s ease;
         }
 
         footer a:hover {
-            
             font-weight: 700;
+            opacity: 0.85;
         }
-        
-        #navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: #060429;
-    color: #e6e0d5;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    box-sizing: border-box;
-}
-a {text-decoration: none;}
-#navbar .header-element {
-    margin: 0 0.5rem;
-    text-decoration: none;
-    color: #e6e0d5;
-}
 
-#navbar a:hover{font-weight: 700;}
-        
+        #navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(6, 4, 41, 0.88);
+            backdrop-filter: blur(12px);
+            color: #e6e0d5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 1.2rem;
+            z-index: 100;
+        }
+
+        a { text-decoration: none; }
+
+        #navbar .header-element {
+            margin: 0 0.5rem;
+            color: #f8f4ef;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: 0.25s ease;
+        }
+
+        #navbar a:hover {
+            font-weight: 700;
+            opacity: 0.9;
+        }
+
         header {
-            right: 0;
-            left: 0;
+            position: relative;
             display: flex;
             flex-direction: column;
             font-weight: 700;
-            height: 100vh;
-            width:100%;
-            background: #e6e0d5;
-            color: #060429;
-            padding: 1.5rem;
+            min-height: 100vh;
+            width: 100%;
+            color: white;
+            padding: 2rem;
             text-align: center;
             justify-content: center;
-        }
-        .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 1rem;
-            background: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at center, rgba(255, 188, 73, 0.95) 0%, rgba(248, 110, 65, 0.92) 26%, rgba(122, 48, 186, 0.92) 58%, rgba(35, 16, 89, 1) 100%);
         }
 
-        section {
-            margin-bottom: 2rem;
+        header::before {
+            content: "";
+            position: absolute;
+            width: 520px;
+            height: 520px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 225, 151, 0.85) 0%, rgba(255, 162, 0, 0.45) 28%, rgba(255, 255, 255, 0) 68%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            filter: blur(6px);
         }
+
+        header h1,
+        header p {
+            position: relative;
+            z-index: 2;
+        }
+
+        header h1 {
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.03em;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            font-weight: 500;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: -70px auto 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 18px 50px rgba(18, 10, 55, 0.08);
+            border-radius: 22px;
+            position: relative;
+            z-index: 5;
+        }
+
+        section { margin-bottom: 2rem; }
 
         h2 {
             color: #060429;
             margin-bottom: 1rem;
+            font-size: 1.5rem;
         }
 
-        p {
-            margin-bottom: 1.5rem;
-        }
+        p { margin-bottom: 1.5rem; }
 
         .tabs {
             display: flex;
             margin-bottom: 1rem;
+            gap: 0.5rem;
         }
 
         .tab {
             flex: 1;
             text-align: center;
-            padding: 0.75rem;
+            padding: 0.9rem;
             cursor: pointer;
-            background: #e9e9e9;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            margin: 0 0.25rem;
+            background: #f1eef8;
+            border: 1px solid #ece7f5;
+            border-radius: 999px;
+            transition: 0.25s ease;
         }
 
         .tab.active {
             background: #060429;
             color: #e6e0d5;
             font-weight: bold;
+            box-shadow: 0 8px 20px rgba(6, 4, 41, 0.15);
         }
 
-        .tab-content {
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        .project {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .project-item {
+            background: white;
+            border-radius: 18px;
+            padding: 14px;
+            box-shadow: 0 10px 30px rgba(30, 18, 80, 0.08);
+            transition: transform 0.25s ease;
+        }
+
+        .project-item:hover {
+            transform: translateY(-4px);
+        }
+
+        .project-item img {
+            border-radius: 14px;
+            max-width: 100%;
+        }
+
+        .project-item a {
+            color: #060429;
+            font-weight: bold;
+            margin-top: auto;
+            text-align: center;
+            align-items: center;
+        }
+
+        .project-item a:hover { font-weight: 800; }
+
+        .toggle-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: #060429;
+            cursor: pointer;
+            margin-left: 0.5rem;
+        }
+
+        #about-content,
+        #why-me-content {
             display: none;
         }
 
-        .tab-content.active {
-            display: block;
+        @media (max-width: 768px) {
+            img { width: 100%; }
+
+            #navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .tabs { flex-direction: column; }
+
+            .tab {
+                width: 100%;
+                margin: 0.25rem 0;
+            }
+
+            .footer-div {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .container {
+                padding: 1rem;
+                margin: -40px 1rem 2rem;
+            }
+
+            .project {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .project-item {
+                width: 100%;
+                text-align: center;
+            }
         }
-        .project {
-   display: flex; flex-direction: row; flex-wrap: wrap;
-gap:40px; justify-content: center;
-}
-
-
-.project-item a {
-    text-decoration: none;
-    color: #060429;
-    font-weight: bold;
-    margin-top: auto;
-    text-align: center;
-    align-items: center;
-}
-        project-item a:hover{font-weight: 800;}
-
-.toggle-btn {
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    color: #060429;
-    cursor: pointer;
-    margin-left: 0.5rem;
-    transform: rotate(0deg);
-    transition: transform 0.3s ease;
-}
-
-.toggle-btn.expanded {
-    transform: rotate(180deg); /* Rotate arrow when expanded */
-}
-
-#about-content, 
-#why-me-content {
-    display: none; /* Hide content by default */
-}
-
-@media (max-width: 768px) {
-    img {
-        width: 100%
-        }
-    #navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .tabs {
-        flex-direction: column;
-    }
-
-    .tab {
-        width: 100%;
-        margin: 0.5rem 0;
-    }
-
-    .footer-div {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .container {
-        padding: 0.5rem;
-    }
-
-    .project {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .project-item {
-        width: 100%; /* Make project items full width */
-        text-align: center;
-    }
-}
-
-
     </style>
     
 </head>    
@@ -253,14 +302,14 @@ gap:40px; justify-content: center;
         <div id="blogposts" class="tab-content active">
             <p>Trust me, I want to share the hundreds of blogposts I'm proud to have created. Since I can't, though, here's a selection of my work:</p>
             <div class="project">
-                <!-- Add project items here -->
+
                 <div class="project-item">
                      <img src="https://media.istockphoto.com/id/1449277958/vector/drug-rehab-center-abstract-concept-vector-illustration.jpg?s=612x612&w=0&k=20&c=yHqG9TP5mZts9khaM76LmTJGpR0Gd8qA9-5ETmUC0q0=" alt="addiction-treatment-stock-img"></img>
     <br />
                     <a target="_blank" href="https://amielkady.github.io/Addiction-Treatment/#" ">Medical Blogposts - Addiction Treatment Center</a>
                 </div>
                      <div class="project">
-                <!-- Add project items here -->
+    
                 <div class="project-item">
                     <img src="https://img.freepik.com/free-vector/computer-troubleshooting-abstract-concept-illustration_335657-2211.jpg?t=st=1735153899~exp=1735157499~hmac=8c991ecb4b18def005f97a09838c6f42790407b01b9c5c2d54b66541ac991af0&w=740" alt="Project Preview">
                             <br />
@@ -273,7 +322,7 @@ gap:40px; justify-content: center;
             
             <p>While I'm still a novice front-end developer, I've also created some projects I'm particularly proud of:</p>
             <div class="project">
-                <!-- Add project items here -->
+  
                
             </div>
         </div>
@@ -322,3 +371,4 @@ function toggleSection(sectionId, button) {
     </script>
 </body>
 </html>
+
