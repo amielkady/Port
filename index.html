@@ -1,363 +1,392 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amira Elkady Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amira Elkady Portfolio</title>
 
-    <style>
-        * { box-sizing: border-box; }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f8f7fb;
-            color: #060429;
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
+<style>
+* {
+    box-sizing: border-box;
+}
 
-        .footer-div {
-            width: 100%;
-            position: relative;
-            bottom: 0;
-            left: 0;
-            background-color: #060429;
-            color: #e6e0d5;
-            padding: 16px 24px;
-        }
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f8f7fb;
+    color: #060429;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
 
-        footer {
-            display: inline-block;
-        }
+/* NAVBAR */
+#navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(6, 4, 41, 0.88);
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1.2rem;
+    z-index: 100;
+}
 
-        footer a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            transition: 0.25s ease;
-        }
+#navbar a {
+    color: #f8f4ef;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: 0.25s ease;
+}
 
-        footer a:hover {
-            font-weight: 700;
-            opacity: 0.85;
-        }
+#navbar a:hover {
+    font-weight: 700;
+}
 
-        #navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(6, 4, 41, 0.88);
-            backdrop-filter: blur(12px);
-            color: #e6e0d5;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.8rem 1.2rem;
-            z-index: 100;
-        }
+/* HEADER */
+header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    justify-content: center;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at center,
+        rgba(255, 188, 73, 0.95) 0%,
+        rgba(248, 110, 65, 0.92) 26%,
+        rgba(122, 48, 186, 0.92) 58%,
+        rgba(35, 16, 89, 1) 100%);
+}
 
-        a { text-decoration: none; }
+header::before {
+    content: "";
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(circle,
+        rgba(255, 225, 151, 0.85) 0%,
+        rgba(255, 162, 0, 0.45) 28%,
+        rgba(255, 255, 255, 0) 68%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(6px);
+}
 
-        #navbar .header-element {
-            margin: 0 0.5rem;
-            color: #f8f4ef;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: 0.25s ease;
-        }
+header h1,
+header p {
+    position: relative;
+    z-index: 2;
+}
 
-        #navbar a:hover {
-            font-weight: 700;
-            opacity: 0.9;
-        }
+header h1 {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    margin-bottom: 0.5rem;
+}
 
-        header {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            font-weight: 700;
-            min-height: 100vh;
-            width: 100%;
-            color: white;
-            padding: 2rem;
-            text-align: center;
-            justify-content: center;
-            overflow: hidden;
-            background:
-                radial-gradient(circle at center, rgba(255, 188, 73, 0.95) 0%, rgba(248, 110, 65, 0.92) 26%, rgba(122, 48, 186, 0.92) 58%, rgba(35, 16, 89, 1) 100%);
-        }
+header p {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
 
-        header::before {
-            content: "";
-            position: absolute;
-            width: 520px;
-            height: 520px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 225, 151, 0.85) 0%, rgba(255, 162, 0, 0.45) 28%, rgba(255, 255, 255, 0) 68%);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            filter: blur(6px);
-        }
+/* CONTAINER */
+.container {
+    max-width: 900px;
+    margin: -70px auto 2rem;
+    padding: 1.5rem;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 18px 50px rgba(18, 10, 55, 0.08);
+    border-radius: 22px;
+    position: relative;
+    z-index: 5;
+}
 
-        header h1,
-        header p {
-            position: relative;
-            z-index: 2;
-        }
+/* HEADINGS */
+h2 {
+    margin-bottom: 1rem;
+}
 
-        header h1 {
-            font-size: clamp(2.5rem, 7vw, 5rem);
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.03em;
-        }
+/* TOGGLE */
+.toggle-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: #060429;
+    cursor: pointer;
+    margin-left: 0.5rem;
+}
 
-        header p {
-            font-size: 1.1rem;
-            font-weight: 500;
-            opacity: 0.95;
-        }
+#about-content,
+#why-me-content {
+    display: none;
+}
 
-        .container {
-            max-width: 900px;
-            margin: -70px auto 2rem;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 18px 50px rgba(18, 10, 55, 0.08);
-            border-radius: 22px;
-            position: relative;
-            z-index: 5;
-        }
+/* TABS */
+.tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
 
-        section { margin-bottom: 2rem; }
+.tab {
+    flex: 1;
+    text-align: center;
+    padding: 0.9rem;
+    cursor: pointer;
+    background: #f1eef8;
+    border: 1px solid #ece7f5;
+    border-radius: 999px;
+    transition: 0.25s ease;
+}
 
-        h2 {
-            color: #060429;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
+.tab.active {
+    background: #060429;
+    color: #e6e0d5;
+    font-weight: bold;
+    box-shadow: 0 8px 20px rgba(6, 4, 41, 0.15);
+}
 
-        p { margin-bottom: 1.5rem; }
+.tab-content {
+    display: none;
+}
 
-        .tabs {
-            display: flex;
-            margin-bottom: 1rem;
-            gap: 0.5rem;
-        }
+.tab-content.active {
+    display: block;
+}
 
-        .tab {
-            flex: 1;
-            text-align: center;
-            padding: 0.9rem;
-            cursor: pointer;
-            background: #f1eef8;
-            border: 1px solid #ece7f5;
-            border-radius: 999px;
-            transition: 0.25s ease;
-        }
+/* PROJECTS */
+.project {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
 
-        .tab.active {
-            background: #060429;
-            color: #e6e0d5;
-            font-weight: bold;
-            box-shadow: 0 8px 20px rgba(6, 4, 41, 0.15);
-        }
+.project-item {
+    background: white;
+    border-radius: 18px;
+    padding: 14px;
+    box-shadow: 0 10px 30px rgba(30, 18, 80, 0.08);
+    transition: 0.25s ease;
+    max-width: 360px;
+    text-align: center;
+}
 
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
+.project-item:hover {
+    transform: translateY(-4px);
+}
 
-        .project {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 40px;
-            justify-content: center;
-        }
+.project-item img {
+    width: 100%;
+    border-radius: 14px;
+}
 
-        .project-item {
-            background: white;
-            border-radius: 18px;
-            padding: 14px;
-            box-shadow: 0 10px 30px rgba(30, 18, 80, 0.08);
-            transition: transform 0.25s ease;
-        }
+.project-item a {
+    color: #060429;
+    text-decoration: none;
+    font-weight: 700;
+}
 
-        .project-item:hover {
-            transform: translateY(-4px);
-        }
+/* FOOTER */
+.footer-div {
+    width: 100%;
+    background-color: #060429;
+    color: #e6e0d5;
+    padding: 16px 24px;
+}
 
-        .project-item img {
-            border-radius: 14px;
-            max-width: 100%;
-        }
+footer a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+}
 
-        .project-item a {
-            color: #060429;
-            font-weight: bold;
-            margin-top: auto;
-            text-align: center;
-            align-items: center;
-        }
+/* MOBILE */
+@media (max-width: 768px) {
+    #navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
-        .project-item a:hover { font-weight: 800; }
+    .tabs {
+        flex-direction: column;
+    }
 
-        .toggle-btn {
-            background: none;
-            border: none;
-            font-size: 1.2rem;
-            color: #060429;
-            cursor: pointer;
-            margin-left: 0.5rem;
-        }
+    .container {
+        margin: -40px 1rem 2rem;
+    }
 
-        #about-content,
-        #why-me-content {
-            display: none;
-        }
+    .project {
+        flex-direction: column;
+        align-items: center;
+    }
 
-        @media (max-width: 768px) {
-            img { width: 100%; }
+    .project-item {
+        width: 100%;
+    }
+}
+</style>
+</head>
 
-            #navbar {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .tabs { flex-direction: column; }
-
-            .tab {
-                width: 100%;
-                margin: 0.25rem 0;
-            }
-
-            .footer-div {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .container {
-                padding: 1rem;
-                margin: -40px 1rem 2rem;
-            }
-
-            .project {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .project-item {
-                width: 100%;
-                text-align: center;
-            }
-        }
-    </style>
-    
-</head>    
-    
-    <navbar id="navbar">
-    <a class="header-element" id="nav-link" href="#about">About Me</a>
-    <a class="header-element" id="nav-link" href="#why-me">Why Me</a>
-    <a class="header-element" id="nav-link" href="#Work">Work Samples</a>
-    <a class="header-element" id="nav-link" href="#Contact">Contact</a>
-  
-    </navbar>
 <body>
 
-    <header>
-        <h1>Hi, I'm Amira Elkady</h1>
-        <p>Thank you for taking an interest in my work!</p>
-    </header>
+<nav id="navbar">
+    <a href="#about">About Me</a>
+    <a href="#why-me">Why Me</a>
+    <a href="#Work">Work Samples</a>
+    <a href="#Contact">Contact</a>
+</nav>
 
-    <div class="container">
+<header>
+    <h1>Hi, I'm Amira Elkady</h1>
+    <p>Thank you for taking an interest in my work!</p>
+</header>
 
-        <section id="about">
-           
-            <h2>About Me
-               <button class="toggle-btn" onclick="toggleSection('about-content', this)">&#9660;</button></h2>
-<div id="about-content">             <p>A highly skilled and results-driven content writer and digital marketing professional with a strong foundation in healthcare and pharmacy.</p>
-            <p>With a Bachelor's degree in Clinical Pharmacy and a Certificate in Sales and Marketing, I combine my medical expertise with SEO strategies to produce informative, SEO-optimized content that educates audiences and drives meaningful engagement. Experienced in utilizing content creation tools, such as WordPress, Canva, and SEMrush, I thrive in collaborative, fast-paced environments and am dedicated to creating content that enhances brand visibility, engages users, and boosts organic traffic.</p>
-            <p>During my time as a copywriter, I've created 500+ blog posts -completely human-written!- driving organic traffic into various clients' webpages. Medical services, FMCG, finance, e-commerce, fashion blogs, you name it, I've probably written a blog or two about it!</p>
-</div></section>
-<section id="why-me">
-    <h2>Why Work With Me
-       <button class="toggle-btn" onclick="toggleSection('why-me-content', this)">&#9660;</button>
-    </h2>
-<div id="why-me-content">    <p>I bring a unique blend of skills that combines technical precision with creative storytelling. With a background as a clinical pharmacist and experience in copywriting and content creation, I excel at simplifying complex concepts into impactful, engaging content.</p>
+<div class="container">
 
-<p>My strong presentation and public speaking skills ensure clear communication, while my attention to detail guarantees high-quality, on-time delivery. Whether you need compelling copy, educational materials, or innovative solutions, I’m committed to driving results that make a difference.</p>
+    <!-- ABOUT -->
+    <section id="about">
+        <h2>
+            About Me
+            <button class="toggle-btn" onclick="toggleSection('about-content', this)">&#9660;</button>
+        </h2>
 
-<p>Let’s create something exceptional together.</p></div>
-</section>
-     <div class="tabs" id="Work">
-    <div class="tab active" data-target="communications">Communications</div>
-    <div class="tab" data-target="other">Other Projects</div>
-</div>
+        <div id="about-content">
+            <p>A highly skilled and results-driven content writer and digital marketing professional with a strong foundation in healthcare and pharmacy.</p>
 
-<div id="communications" class="tab-content active">
-    <p>Selected communication materials and internal-facing projects I contributed to.</p>
+            <p>With a Bachelor's degree in Clinical Pharmacy and a Certificate in Sales and Marketing, I combine my medical expertise with SEO strategies to produce informative, SEO-optimized content that educates audiences and drives meaningful engagement.</p>
 
-    <div class="project">
-        <div class="project-item">
-            <a target="_blank" href="legislative-update-email.html">
-                Corporate Communication Scope – Legislative Update Email
-            </a>
+            <p>During my time as a copywriter, I've created 500+ blog posts — completely human-written — driving organic traffic into various clients' webpages.</p>
+        </div>
+    </section>
+
+    <!-- WHY ME -->
+    <section id="why-me">
+        <h2>
+            Why Work With Me
+            <button class="toggle-btn" onclick="toggleSection('why-me-content', this)">&#9660;</button>
+        </h2>
+
+        <div id="why-me-content">
+            <p>I bring a unique blend of skills that combines technical precision with creative storytelling.</p>
+
+            <p>With a background as a clinical pharmacist and experience in copywriting and content creation, I excel at simplifying complex concepts into impactful, engaging content.</p>
+
+            <p>Let’s create something exceptional together.</p>
+        </div>
+    </section>
+
+    <!-- WORK -->
+    <div class="tabs" id="Work">
+        <div class="tab active" data-target="communications">Communications</div>
+        <div class="tab" data-target="blogposts">Blogposts</div>
+        <div class="tab" data-target="other">Other Projects</div>
+    </div>
+
+    <!-- COMMUNICATIONS -->
+    <div id="communications" class="tab-content active">
+        <p>Selected communication materials and internal-facing projects I contributed to.</p>
+
+        <div class="project">
+            <div class="project-item">
+                <a target="_blank" href="legislative-update-email.html">
+                    Corporate Communication Scope – Legislative Update Email
+                </a>
+            </div>
         </div>
     </div>
-</div>
-        <div id="blogposts" class="tab-content active"> <p>Trust me, I want to share the hundreds of blogposts I'm proud to have created. Since I can't, though, here's a selection of my work:</p> <div class="project"> <!-- Add project items here --> <div class="project-item"> <img src="https://media.istockphoto.com/id/1449277958/vector/drug-rehab-center-abstract-concept-vector-illustration.jpg?s=612x612&w=0&k=20&c=yHqG9TP5mZts9khaM76LmTJGpR0Gd8qA9-5ETmUC0q0=" alt="addiction-treatment-stock-img"></img> <br /> <a target="_blank" href="https://amielkady.github.io/Addiction-Treatment/#" ">Medical Blogposts - Addiction Treatment Center</a> </div> <div class="project"> <!-- Add project items here --> <div class="project-item"> <img src="https://img.freepik.com/free-vector/computer-troubleshooting-abstract-concept-illustration_335657-2211.jpg?t=st=1735153899~exp=1735157499~hmac=8c991ecb4b18def005f97a09838c6f42790407b01b9c5c2d54b66541ac991af0&w=740" alt="Project Preview"> <br /> <a target="_blank" href="https://amielkady.github.io/Technical-Blogposts/#" target="_blank">Technical Blogposts - Tech Troubleshooting</a> </div> </div> </div> </div>
 
-<div id="other" class="tab-content">
-    <p>While I'm still a novice front-end developer, I've also created some projects I'm particularly proud of:</p>
-    <div class="project"></div>
-</div>
-    
-        <div id="Contact" class="footer-div">
-    <footer >  
-    <a href="https://www.linkedin.com/in/amielkady/" target="_blank">LinkedIn</a>
-    <a href="tel:+201155119971" target="_blank">Call Me</a>
-    <a href="mailto:amiselkady@gmail.com" target="_blank">Let's Chat</a>
-        <br />
-    <p id="disclaimer">**This portfolio is for the consideration of hiring managers only. <br /> The sample work above belongs to the clients and none are published under my name.</p>
-</footer>
+    <!-- BLOGPOSTS -->
+    <div id="blogposts" class="tab-content">
+        <p>Trust me, I want to share the hundreds of blogposts I'm proud to have created. Since I can't, though, here's a selection of my work:</p>
+
+        <div class="project">
+
+            <div class="project-item">
+                <img src="https://media.istockphoto.com/id/1449277958/vector/drug-rehab-center-abstract-concept-vector-illustration.jpg?s=612x612&w=0&k=20&c=yHqG9TP5mZts9khaM76LmTJGpR0Gd8qA9-5ETmUC0q0=" alt="addiction treatment">
+                <br><br>
+                <a target="_blank" href="https://amielkady.github.io/Addiction-Treatment/">
+                    Medical Blogposts – Addiction Treatment Center
+                </a>
+            </div>
+
+            <div class="project-item">
+                <img src="https://img.freepik.com/free-vector/computer-troubleshooting-abstract-concept-illustration_335657-2211.jpg" alt="technical blogposts">
+                <br><br>
+                <a target="_blank" href="https://amielkady.github.io/Technical-Blogposts/">
+                    Technical Blogposts – Tech Troubleshooting
+                </a>
+            </div>
+
         </div>
+    </div>
 
-            
-    <script>
-        document.querySelectorAll('.tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-                document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+    <!-- OTHER -->
+    <div id="other" class="tab-content">
+        <p>While I'm still a novice front-end developer, I've also created some projects I'm particularly proud of:</p>
+        <div class="project"></div>
+    </div>
 
-                tab.classList.add('active');
-                document.getElementById(tab.dataset.target).classList.add('active');
-            });
-        });
+</div>
 
-            document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('#about-content, #why-me-content').forEach(section => {
-            section.style.display = 'none';
-        });
+<!-- FOOTER -->
+<div id="Contact" class="footer-div">
+    <footer>
+        <a href="https://www.linkedin.com/in/amielkady/" target="_blank">LinkedIn</a>
+        <a href="tel:+201155119971">Call Me</a>
+        <a href="mailto:amiselkady@gmail.com">Let's Chat</a>
+
+        <p>
+            **This portfolio is for the consideration of hiring managers only.<br>
+            The sample work above belongs to the clients and none are published under my name.
+        </p>
+    </footer>
+</div>
+
+<script>
+document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.target).classList.add('active');
     });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('#about-content, #why-me-content').forEach(section => {
+        section.style.display = 'none';
+    });
+});
 
 function toggleSection(sectionId, button) {
     const section = document.getElementById(sectionId);
 
     if (section.style.display === 'none' || !section.style.display) {
-        section.style.display = 'block'; // Show the section
-        button.innerHTML = '&#9650;'; // Change arrow to up
+        section.style.display = 'block';
+        button.innerHTML = '&#9650;';
     } else {
-        section.style.display = 'none'; // Hide the section
-        button.innerHTML = '&#9660;'; // Change arrow to down
+        section.style.display = 'none';
+        button.innerHTML = '&#9660;';
     }
 }
-    </script>
+</script>
+
 </body>
 </html>
-
