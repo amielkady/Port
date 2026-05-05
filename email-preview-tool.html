@@ -8,175 +8,93 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
-
 <style>
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  background: #f8f7fb;
-  color: #1d1736;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
 }
 
-/* TOP BAR */
-.topbar {
-  height: 64px;
-  background: white;
-  border-bottom: 1px solid #ece7f5;
+.theme-switch input {
+  display: none;
+}
+
+/* Track */
+.theme-slider {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  background: #e5e7eb;
+  border-radius: 999px;
+  transition: background 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 16px;
+  padding: 0 8px;
 }
 
-.brand {
-  font-weight: 800;
-  background: linear-gradient(90deg,#7a30ba,#f86e41);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.controls {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-select {
-  padding: 8px 10px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  background: white;
-}
-
-/* toggle */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 46px;
-  height: 24px;
-}
-
-.switch input { display: none; }
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  inset: 0;
-  background: #ccc;
-  border-radius: 999px;
-  transition: .3s;
-}
-
-.slider:before {
+/* Sliding knob */
+.theme-slider::before {
   content: "";
   position: absolute;
-  height: 18px;
-  width: 18px;
+  height: 24px;
+  width: 24px;
   left: 3px;
   top: 3px;
   background: white;
   border-radius: 50%;
-  transition: .3s;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
 }
 
-input:checked + .slider {
-  background: #7a30ba;
-}
-
-input:checked + .slider:before {
-  transform: translateX(22px);
-}
-
-/* APP */
-.app {
+/* ICON CONTAINER */
+.icon {
+  width: 18px;
+  height: 18px;
   display: flex;
-  flex: 1;
-  overflow: hidden;
-}
-
-/* EDITOR */
-.editor {
-  width: 40%;
-  background: white;
-  border-right: 1px solid #ece7f5;
-  display: flex;
-  flex-direction: column;
-}
-
-.editor textarea {
-  flex: 1;
-  border: none;
-  padding: 16px;
-  outline: none;
-  font-size: 14px;
-  line-height: 1.6;
-  resize: none;
-}
-
-/* PREVIEW */
-.preview {
-  flex: 1;
-  display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: flex-start;
-  padding: 20px;
-  background: #f3f4f6;
-  overflow: auto;
+  opacity: 0.6;
+  z-index: 1;
 }
 
-.frame {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 18px 50px rgba(0,0,0,0.1);
-  overflow: hidden;
-  transition: all .3s ease;
+/* SVG styling */
+.icon svg {
+  width: 14px;
+  height: 14px;
+  stroke: #555;
+  transition: stroke 0.3s ease;
 }
 
-/* DEVICE SIZES */
-.device-desktop { width: 650px; }
-.device-outlook { width: 600px; }
-.device-iphone { width: 390px; }
-.device-android { width: 360px; }
-
-.frame-content {
-  padding: 20px;
-  font-size: 14px;
-  line-height: 1.6;
+/* DARK MODE ACTIVE (toggle checked) */
+input:checked + .theme-slider {
+  background: #2b2b2b;
 }
 
-/* DARK MODE */
-.dark body {
-  background: #1a1a1a;
-  color: white;
+/* move knob */
+input:checked + .theme-slider::before {
+  transform: translateX(30px);
 }
 
-.dark .topbar,
-.dark .editor {
-  background: #2a2a2a;
-  color: white;
+/* icon color in dark mode */
+input:checked + .theme-slider .icon svg {
+  stroke: #f3f4f6;
+  opacity: 0.9;
 }
 
-.dark .preview {
-  background: #111;
-}
-
-.dark .frame {
-  background: #1e1e1e;
-  color: white;
-}
-</style>
+/* hover polish */
+.theme-switch:hover .theme-slider {
+  filter: brightness(0.98);
+} </style>
 </head>
 
 <body>
 
 <div class="topbar">
   <div class="brand">Email Studio</div>
-
+<div style="font-size:12px; color:#666;">During my time in WorkMotion, I was working on Salesforce to send out mass corporate emails. While this was beneficial as we had all client and talent data, it was less than satisfactory when previewing emails without the proper add-ons. <br> This is why I created this responsive email tool, to help the team visualise how recipients will view our content.</div>
   <div class="controls">
 
     <!-- VIEWPORT -->
@@ -188,10 +106,28 @@ input:checked + .slider:before {
     </select>
 
     <!-- DARK MODE -->
-    <label class="switch">
-      <input type="checkbox" id="darkToggle">
-      <span class="slider"></span>
-    </label>
+<label class="theme-switch">
+  <input type="checkbox" id="darkToggle">
+
+  <span class="theme-slider">
+    
+    <!-- SUN -->
+    <span class="icon sun">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/>
+      </svg>
+    </span>
+
+    <!-- MOON -->
+    <span class="icon moon">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+      </svg>
+    </span>
+
+  </span>
+</label>
 
   </div>
 </div>
