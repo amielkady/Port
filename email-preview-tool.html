@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Email Builder Simulator</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: #f8f7fb;
+  color: #1d1736;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* TOP BAR */
+.topbar {
+  height: 60px;
+  background: white;
+  border-bottom: 1px solid #ece7f5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+}
+
+.brand {
+  font-weight: 800;
+  background: linear-gradient(90deg,#7a30ba,#f86e41);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* LAYOUT */
+.app {
+  display: flex;
+  height: calc(100vh - 60px);
+}
+
+/* LEFT (EDITOR) */
+.editor {
+  width: 35%;
+  min-width: 300px;
+  border-right: 1px solid #ece7f5;
+  background: white;
+  display: flex;
+  flex-direction: column;
+}
+
+/* BLOCK PALETTE */
+.palette {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.block-btn {
+  padding: 8px 10px;
+  font-size: 12px;
+  border-radius: 10px;
+  border: 1px solid #ece7f5;
+  background: #faf7ff;
+  cursor: grab;
+}
+
+/* EDIT AREA */
+.canvas {
+  flex: 1;
+  padding: 16px;
+  overflow: auto;
+}
+
+.block {
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px dashed #d9d3ea;
+  margin-bottom: 12px;
+  background: #fff;
+}
+
+/* RIGHT PREVIEW */
+.preview {
+  flex: 1;
+  background: #f3f4f6;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.email-frame {
+  width: 600px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+/* EMAIL HEADER */
+.email-header {
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+  background: #fafafa;
+}
+
+.email-body {
+  padding: 20px;
+}
+
+h4 {
+  margin: 0 0 10px;
+}
+
+p {
+  margin: 0 0 10px;
+  line-height: 1.6;
+}
+
+/* DRAG HINT */
+.hint {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="brand">Email Studio</div>
+  <div style="font-size:12px; color:#666;">During my time in WorkMotion, I was working on Salesforce to send out mass corporate emails.
+     While this was beneficial as we had all client and talent data, it was less than satisfactory when previewing emails without the proper add-ons. <br>
+  This is why I created this responsive email tool, to help the team visualise how recipients will view our content.</div>
+</div>
+
+<div class="app">
+
+  <!-- EDITOR -->
+  <div class="editor">
+
+    <div class="palette">
+      <div class="block-btn" draggable="true" data-type="text">Text</div>
+      <div class="block-btn" draggable="true" data-type="header">Header</div>
+      <div class="block-btn" draggable="true" data-type="button">Button</div>
+    </div>
+
+    <div class="canvas" id="canvas">
+      <div class="hint">Drag blocks here</div>
+    </div>
+
+  </div>
+
+  <!-- PREVIEW -->
+  <div class="preview">
+    <div class="email-frame">
+      <div class="email-header">
+        <strong>Gmail / Outlook Preview</strong>
+        <div style="font-size:12px;color:#777;">client simulation</div>
+      </div>
+      <div class="email-body" id="preview"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const canvas = document.getElementById("canvas");
+const preview = document.getElementById("preview");
+
+let draggedType = null;
+
+document.querySelectorAll(".block-btn").forEach(btn => {
+  btn.addEventListener("dragstart", () => {
+    draggedType = btn.dataset.type;
+  });
+});
+
+canvas.addEventListener("dragover", e => {
+  e.preventDefault();
+});
+
+canvas.addEventListener("drop", e => {
+  e.preventDefault();
+
+  let el = document.createElement("div");
+  el.className = "block";
+
+  if (draggedType === "text") {
+    el.innerHTML = "<p contenteditable='true'>Editable text block</p>";
+  }
+
+  if (draggedType === "header") {
+    el.innerHTML = "<h4 contenteditable='true'>Email Header</h4>";
+  }
+
+  if (draggedType === "button") {
+    el.innerHTML = "<button contenteditable='true'>Click me</button>";
+  }
+
+  canvas.appendChild(el);
+  updatePreview();
+});
+
+canvas.addEventListener("input", updatePreview);
+
+function updatePreview() {
+  preview.innerHTML = canvas.innerHTML;
+}
+</script>
+
+</body>
+</html>
