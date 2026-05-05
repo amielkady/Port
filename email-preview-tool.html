@@ -3,16 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Email Builder Simulator</title>
+<title>Email Studio Simulator</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -20,19 +18,19 @@ body {
   background: #f8f7fb;
   color: #1d1736;
   height: 100vh;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 /* TOP BAR */
 .topbar {
-  height: 60px;
+  height: 64px;
   background: white;
   border-bottom: 1px solid #ece7f5;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.04);
 }
 
 .brand {
@@ -42,97 +40,134 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-/* LAYOUT */
-.app {
+.controls {
   display: flex;
-  height: calc(100vh - 60px);
+  align-items: center;
+  gap: 12px;
 }
 
-/* LEFT (EDITOR) */
-.editor {
-  width: 35%;
-  min-width: 300px;
-  border-right: 1px solid #ece7f5;
+select {
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
   background: white;
+}
+
+/* toggle */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 24px;
+}
+
+.switch input { display: none; }
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: #ccc;
+  border-radius: 999px;
+  transition: .3s;
+}
+
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  top: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: .3s;
+}
+
+input:checked + .slider {
+  background: #7a30ba;
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+/* APP */
+.app {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* EDITOR */
+.editor {
+  width: 40%;
+  background: white;
+  border-right: 1px solid #ece7f5;
   display: flex;
   flex-direction: column;
 }
 
-/* BLOCK PALETTE */
-.palette {
-  padding: 12px;
-  border-bottom: 1px solid #eee;
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.block-btn {
-  padding: 8px 10px;
-  font-size: 12px;
-  border-radius: 10px;
-  border: 1px solid #ece7f5;
-  background: #faf7ff;
-  cursor: grab;
-}
-
-/* EDIT AREA */
-.canvas {
+.editor textarea {
   flex: 1;
+  border: none;
   padding: 16px;
+  outline: none;
+  font-size: 14px;
+  line-height: 1.6;
+  resize: none;
+}
+
+/* PREVIEW */
+.preview {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  background: #f3f4f6;
   overflow: auto;
 }
 
-.block {
-  padding: 14px;
-  border-radius: 14px;
-  border: 1px dashed #d9d3ea;
-  margin-bottom: 12px;
-  background: #fff;
-}
-
-/* RIGHT PREVIEW */
-.preview {
-  flex: 1;
-  background: #f3f4f6;
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-}
-
-.email-frame {
-  width: 600px;
+.frame {
   background: white;
   border-radius: 12px;
   box-shadow: 0 18px 50px rgba(0,0,0,0.1);
   overflow: hidden;
+  transition: all .3s ease;
 }
 
-/* EMAIL HEADER */
-.email-header {
+/* DEVICE SIZES */
+.device-desktop { width: 650px; }
+.device-outlook { width: 600px; }
+.device-iphone { width: 390px; }
+.device-android { width: 360px; }
+
+.frame-content {
   padding: 20px;
-  border-bottom: 1px solid #eee;
-  background: #fafafa;
-}
-
-.email-body {
-  padding: 20px;
-}
-
-h4 {
-  margin: 0 0 10px;
-}
-
-p {
-  margin: 0 0 10px;
+  font-size: 14px;
   line-height: 1.6;
 }
 
-/* DRAG HINT */
-.hint {
-  font-size: 12px;
-  color: #888;
-  margin-bottom: 10px;
+/* DARK MODE */
+.dark body {
+  background: #1a1a1a;
+  color: white;
+}
+
+.dark .topbar,
+.dark .editor {
+  background: #2a2a2a;
+  color: white;
+}
+
+.dark .preview {
+  background: #111;
+}
+
+.dark .frame {
+  background: #1e1e1e;
+  color: white;
 }
 </style>
 </head>
@@ -141,84 +176,63 @@ p {
 
 <div class="topbar">
   <div class="brand">Email Studio</div>
-  <div style="font-size:12px; color:#666;">During my time in WorkMotion, I was working on Salesforce to send out mass corporate emails.
-     While this was beneficial as we had all client and talent data, it was less than satisfactory when previewing emails without the proper add-ons. <br>
-  This is why I created this responsive email tool, to help the team visualise how recipients will view our content.</div>
+
+  <div class="controls">
+
+    <!-- VIEWPORT -->
+    <select id="deviceSelect">
+      <option value="device-outlook">Outlook / Gmail</option>
+      <option value="device-iphone">iPhone</option>
+      <option value="device-android">Android</option>
+      <option value="device-desktop">Desktop</option>
+    </select>
+
+    <!-- DARK MODE -->
+    <label class="switch">
+      <input type="checkbox" id="darkToggle">
+      <span class="slider"></span>
+    </label>
+
+  </div>
 </div>
 
 <div class="app">
 
   <!-- EDITOR -->
   <div class="editor">
-
-    <div class="palette">
-      <div class="block-btn" draggable="true" data-type="text">Text</div>
-      <div class="block-btn" draggable="true" data-type="header">Header</div>
-      <div class="block-btn" draggable="true" data-type="button">Button</div>
-    </div>
-
-    <div class="canvas" id="canvas">
-      <div class="hint">Drag blocks here</div>
-    </div>
-
+    <textarea id="editor" placeholder="Paste your Salesforce email HTML or text here..."></textarea>
   </div>
 
   <!-- PREVIEW -->
   <div class="preview">
-    <div class="email-frame">
-      <div class="email-header">
-        <strong>Gmail / Outlook Preview</strong>
-        <div style="font-size:12px;color:#777;">client simulation</div>
-      </div>
-      <div class="email-body" id="preview"></div>
+    <div class="frame device-outlook" id="frame">
+      <div class="frame-content" id="preview"></div>
     </div>
   </div>
 
 </div>
 
 <script>
-const canvas = document.getElementById("canvas");
+const editor = document.getElementById("editor");
 const preview = document.getElementById("preview");
+const frame = document.getElementById("frame");
+const deviceSelect = document.getElementById("deviceSelect");
+const darkToggle = document.getElementById("darkToggle");
 
-let draggedType = null;
-
-document.querySelectorAll(".block-btn").forEach(btn => {
-  btn.addEventListener("dragstart", () => {
-    draggedType = btn.dataset.type;
-  });
+// LIVE COPY PASTE PREVIEW
+editor.addEventListener("input", () => {
+  preview.innerHTML = editor.value;
 });
 
-canvas.addEventListener("dragover", e => {
-  e.preventDefault();
+// DEVICE SWITCH
+deviceSelect.addEventListener("change", () => {
+  frame.className = "frame " + deviceSelect.value;
 });
 
-canvas.addEventListener("drop", e => {
-  e.preventDefault();
-
-  let el = document.createElement("div");
-  el.className = "block";
-
-  if (draggedType === "text") {
-    el.innerHTML = "<p contenteditable='true'>Editable text block</p>";
-  }
-
-  if (draggedType === "header") {
-    el.innerHTML = "<h4 contenteditable='true'>Email Header</h4>";
-  }
-
-  if (draggedType === "button") {
-    el.innerHTML = "<button contenteditable='true'>Click me</button>";
-  }
-
-  canvas.appendChild(el);
-  updatePreview();
+// DARK MODE
+darkToggle.addEventListener("change", () => {
+  document.body.classList.toggle("dark", darkToggle.checked);
 });
-
-canvas.addEventListener("input", updatePreview);
-
-function updatePreview() {
-  preview.innerHTML = canvas.innerHTML;
-}
 </script>
 
 </body>
