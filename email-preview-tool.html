@@ -8,10 +8,151 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+
 <style>
+/* =========================
+   BASE
+========================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: #f8f7fb;
+  color: #1d1736;
+}
+
+/* DARK MODE */
+body.dark {
+  background: #0f0f14;
+  color: #f3f4f6;
+}
+
+/* =========================
+   TOPBAR
+========================= */
+.topbar {
+  height: 70px;
+  background: white;
+  border-bottom: 1px solid #ece7f5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+
+body.dark .topbar {
+  background: #161622;
+  border-color: #2a2a3a;
+}
+
+.brand {
+  font-weight: 800;
+  background: linear-gradient(90deg,#7a30ba,#f86e41);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.topbar-text {
+  font-size: 12px;
+  color: #666;
+  max-width: 520px;
+}
+
+body.dark .topbar-text {
+  color: #bbb;
+}
+
+/* =========================
+   CONTROLS
+========================= */
+.controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+select {
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+.app {
+  display: flex;
+  height: calc(100vh - 70px);
+}
+
+/* EDITOR */
+.editor {
+  width: 35%;
+  min-width: 320px;
+  background: white;
+  border-right: 1px solid #ece7f5;
+  padding: 12px;
+}
+
+body.dark .editor {
+  background: #161622;
+  border-color: #2a2a3a;
+}
+
+textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  font-family: inherit;
+  font-size: 14px;
+  padding: 10px;
+}
+
+/* PREVIEW */
+.preview {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background: #f3f4f6;
+}
+
+body.dark .preview {
+  background: #0b0b10;
+}
+
+.frame {
+  width: 600px;
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+body.dark .frame {
+  background: #1a1a24;
+}
+
+.frame-header {
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+  font-size: 13px;
+}
+
+body.dark .frame-header {
+  border-color: #2a2a3a;
+}
+
+/* =========================
+   TOGGLE (SUN / MOON SVG)
+========================= */
 .theme-switch {
   position: relative;
-  display: inline-block;
   width: 60px;
   height: 30px;
 }
@@ -20,129 +161,127 @@
   display: none;
 }
 
-/* Track */
-.theme-slider {
+.slider {
   position: absolute;
   inset: 0;
-  cursor: pointer;
   background: #e5e7eb;
   border-radius: 999px;
-  transition: background 0.3s ease;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 8px;
+  transition: 0.3s;
 }
 
-/* Sliding knob */
-.theme-slider::before {
+.slider::before {
   content: "";
   position: absolute;
-  height: 24px;
   width: 24px;
+  height: 24px;
   left: 3px;
   top: 3px;
   background: white;
   border-radius: 50%;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 2;
+  transition: 0.35s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
-/* ICON CONTAINER */
-.icon {
-  width: 18px;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.6;
-  z-index: 1;
-}
-
-/* SVG styling */
-.icon svg {
-  width: 14px;
-  height: 14px;
-  stroke: #555;
-  transition: stroke 0.3s ease;
-}
-
-/* DARK MODE ACTIVE (toggle checked) */
-input:checked + .theme-slider {
+input:checked + .slider {
   background: #2b2b2b;
 }
 
-/* move knob */
-input:checked + .theme-slider::before {
+input:checked + .slider::before {
   transform: translateX(30px);
 }
 
-/* icon color in dark mode */
-input:checked + .theme-slider .icon svg {
-  stroke: #f3f4f6;
-  opacity: 0.9;
+.icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* hover polish */
-.theme-switch:hover .theme-slider {
-  filter: brightness(0.98);
-} </style>
+.icon svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+}
+
+/* =========================
+   RESPONSIVE VIEWS
+========================= */
+.frame.outlook { width: 600px; }
+.frame.iphone { width: 390px; }
+.frame.android { width: 420px; }
+.frame.desktop { width: 800px; }
+
+</style>
 </head>
 
 <body>
 
+<!-- TOPBAR -->
 <div class="topbar">
+
   <div class="brand">Email Studio</div>
-<div style="font-size:12px; color:#666;">During my time in WorkMotion, I was working on Salesforce to send out mass corporate emails. While this was beneficial as we had all client and talent data, it was less than satisfactory when previewing emails without the proper add-ons. <br> This is why I created this responsive email tool, to help the team visualise how recipients will view our content.</div>
+
+  <div class="topbar-text">
+    During my time in WorkMotion, I was working on Salesforce to send out mass corporate emails. While this was beneficial as we had all client and talent data, it was less than satisfactory when previewing emails without the proper add-ons. <br>
+    This is why I created this responsive email tool, to help the team visualise how recipients will view our content.
+  </div>
+
   <div class="controls">
 
-    <!-- VIEWPORT -->
     <select id="deviceSelect">
-      <option value="device-outlook">Outlook / Gmail</option>
-      <option value="device-iphone">iPhone</option>
-      <option value="device-android">Android</option>
-      <option value="device-desktop">Desktop</option>
+      <option value="outlook">Outlook / Gmail</option>
+      <option value="iphone">iPhone</option>
+      <option value="android">Android</option>
+      <option value="desktop">Desktop</option>
     </select>
 
-    <!-- DARK MODE -->
-<label class="theme-switch">
-  <input type="checkbox" id="darkToggle">
+    <!-- TOGGLE -->
+    <label class="theme-switch">
+      <input type="checkbox" id="darkToggle">
 
-  <span class="theme-slider">
-    
-    <!-- SUN -->
-    <span class="icon sun">
-      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="4"></circle>
-        <path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/>
-      </svg>
-    </span>
+      <span class="slider">
 
-    <!-- MOON -->
-    <span class="icon moon">
-      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
-      </svg>
-    </span>
+        <!-- SUN -->
+        <span class="icon">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/>
+          </svg>
+        </span>
 
-  </span>
-</label>
+        <!-- MOON -->
+        <span class="icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+          </svg>
+        </span>
+
+      </span>
+    </label>
 
   </div>
 </div>
 
+<!-- APP -->
 <div class="app">
 
   <!-- EDITOR -->
   <div class="editor">
-    <textarea id="editor" placeholder="Paste your Salesforce email HTML or text here..."></textarea>
+    <textarea id="editor" placeholder="Paste Salesforce email here..."></textarea>
   </div>
 
   <!-- PREVIEW -->
   <div class="preview">
-    <div class="frame device-outlook" id="frame">
-      <div class="frame-content" id="preview"></div>
+    <div class="frame outlook" id="frame">
+      <div class="frame-header">Email Preview</div>
+      <div id="preview" style="padding:20px;"></div>
     </div>
   </div>
 
@@ -155,17 +294,17 @@ const frame = document.getElementById("frame");
 const deviceSelect = document.getElementById("deviceSelect");
 const darkToggle = document.getElementById("darkToggle");
 
-// LIVE COPY PASTE PREVIEW
+/* LIVE PREVIEW */
 editor.addEventListener("input", () => {
   preview.innerHTML = editor.value;
 });
 
-// DEVICE SWITCH
+/* DEVICE SWITCH */
 deviceSelect.addEventListener("change", () => {
   frame.className = "frame " + deviceSelect.value;
 });
 
-// DARK MODE
+/* DARK MODE */
 darkToggle.addEventListener("change", () => {
   document.body.classList.toggle("dark", darkToggle.checked);
 });
