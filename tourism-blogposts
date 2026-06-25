@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tourism & Travel Blog Posts</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;}
+
+body{
+    margin:0;
+    padding:0;
+    font-family:'Plus Jakarta Sans',sans-serif;
+    line-height:1.75;
+    color:#2a2440;
+    background:#f8f7fb;
+}
+
+header{
+    position:relative;
+    overflow:hidden;
+    padding:5rem 1.5rem 4rem;
+    text-align:center;
+    color:white;
+    background:
+    radial-gradient(circle at center,
+    rgba(255,204,102,.95) 0%,
+    rgba(255,145,77,.92) 25%,
+    rgba(72,146,220,.92) 60%,
+    rgba(19,50,107,1) 100%);
+}
+
+header::before{
+    content:"";
+    position:absolute;
+    width:420px;
+    height:420px;
+    border-radius:50%;
+    background:radial-gradient(circle,
+    rgba(255,255,255,.9) 0%,
+    rgba(255,214,102,.4) 35%,
+    rgba(255,255,255,0) 70%);
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    filter:blur(10px);
+}
+
+header h1,
+header p{
+    position:relative;
+    z-index:2;
+}
+
+.container{
+    max-width:920px;
+    margin:-45px auto 3rem;
+    padding:2rem;
+    background:rgba(255,255,255,.96);
+    border-radius:24px;
+    box-shadow:0 18px 50px rgba(18,10,55,.08);
+    position:relative;
+    z-index:5;
+}
+
+#disclaimer{
+    font-size:.7rem;
+    background:#f4effd;
+    color:#4c3e74;
+    padding:1rem 1.2rem;
+    border-radius:14px;
+    margin-bottom:2rem;
+}
+
+.content h1,
+.content h2,
+.content h3,
+.content h4{
+    color:#1d1736;
+}
+
+.contents-box{
+    background:#faf7ff;
+    border:1px solid #eee8fb;
+    border-radius:16px;
+    padding:1rem 1.25rem;
+    margin-bottom:2rem;
+}
+
+.rounded{
+    border:none;
+    height:2px;
+    background:linear-gradient(
+        to right,
+        rgba(255,204,102,.8),
+        rgba(72,146,220,.8)
+    );
+    border-radius:999px;
+    margin:2rem 0;
+}
+
+.hero-img{
+    width:100%;
+    border-radius:18px;
+    margin-bottom:2rem;
+}
+
+.back-link{
+    display:inline-block;
+    margin-top:2rem;
+    text-decoration:none;
+    color:#1d1736;
+    font-weight:700;
+}
+
+@media(max-width:768px){
+    .container{
+        margin:-25px 1rem 2rem;
+        padding:1.2rem;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+    <h1>Tourism & Travel Blog Posts</h1>
+    <p>Travel guides, destination inspiration, relocation advice, and tourism-focused content.</p>
+</header>
+
+<div class="content">
+
+<h5>As a content writer for ContentPit, I created high-quality, engaging, and SEO-optimized content across various niches.</h5>
+
+<p id="disclaimer">
+Disclaimer: The articles featured in this portfolio are credited to the respective clients and not under my name, as per ContentPit policies.
+</p>
+
+<div class="contents-box">
+    <h4>Contents</h4>
+    <ul>
+        <li><a href="#kent-spa-hotels">5 Spa Hotels in Kent for a Relaxing Weekend</a></li>
+        <li><a href="#move-to-france">Get Paid to Move to France</a></li>
+    </ul>
+</div>
+
+<hr class="rounded">
+
+<img class="hero-img"
+src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4tU2HZnzSBBvjcnz35J-_f1Lw7KmvY1xH23T3OtgYIwb5w6vCmmA4zO8&s=10"
+alt="Travel and tourism">
+
+<!-- ARTICLE 1 -->
+
+<article id="kent-spa-hotels">
+
+<h1>5 Spa Hotels in Kent for a Relaxing Weekend</h1>
+
+<p>
+Having lived in Kent my whole life, I can personally attest to its beauty and tranquillity, despite its proximity to London.
+</p>
+
+<p>
+If you’re after a rejuvenating spa break, then the Kent countryside offers a handful of lovely hotels and spas for a dreamy getaway.
+</p>
+
+<p>
+In this article, I share my pick of the best spa hotels in Kent to help you de-stress and return to your best self.
+</p>
+
+<p><strong>Featured hotels:</strong></p>
+
+<ul>
+<li>Hempstead House Hotel & Spa</li>
+<li>Yarrow Hotel</li>
+<li>The Spa Hotel Tunbridge Wells</li>
+<li>Brandshatch Place Hotel & Spa</li>
+<li>Rowhill Grange Hotel & Utopia Spa</li>
+</ul>
+
+<p>
+[Paste the full article here]
+</p>
+
+</article>
+
+<hr class="rounded">
+
+<!-- ARTICLE 2 -->
+
+<article id="move-to-france">
+
+<h1>Get Paid to Move to France</h1>
+
+<p>
+Moving to France seems straight out of a movie, but you can easily make this dream come true.
+</p>
+
+<p>
+In fact, you can get paid to relocate, whether you're looking for an exciting job opportunity or want to buy a house in the French countryside.
+</p>
+
+<p>
+France offers exceptional social benefits, an enviable work-life balance, and exciting opportunities for expats.
+</p>
+
+<p>
+This article explores relocation incentives, cities worth considering, careers that can support your move, and what life in France is really like.
+</p>
+
+<p>
+[Paste the full article here]
+</p>
+
+</article>
+
+<a class="back-link" href="https://amielkady.github.io/Port/">
+← Back to Portfolio
+</a>
+
+</div>
+</div>
+
+</body>
+</html>
